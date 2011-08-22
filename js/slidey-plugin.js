@@ -1,3 +1,16 @@
+/*
+ * jQuery 'Slidey' plug-in
+ * 
+ * http://www.jcwd.com.au
+ * @john0514
+ *
+ * Copyright 2011, John Cobb
+ * Free to all to use, abuse and improve under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ * August 2011
+ */
+
 (function($){
 	$.fn.slidey = function(options) {
       
@@ -7,6 +20,8 @@
 		var settings = {};	
 		
 		var defaults = {
+			width: 700,					// Width of the slider container & slides
+			height: 300,				// Height of the slider container & slides
 			rotationSpeed: 	4000,		// The speed of the image rotation
             fadeDuration:   800,        // The duration of the fade transition
 			child: 			'img',		// The type of element which we will be rotating
@@ -39,6 +54,9 @@
 			$next,											// Next button
 			$previous										// Previous button
 		
+		$($slider).height(settings.height).width(settings.width);
+		$($banners).height(settings.height).width(settings.width);
+		
 		// Hook me with some positional indicators!	
 		if(settings.showMarkers){
 		
@@ -65,7 +83,7 @@
 
 			// Horizontally center the markers
 			if(settings.centerMarkers){
-				offset = ($slider.width() - $position.innerWidth() )/ 2;
+				offset = ($slider.innerWidth() - $position.innerWidth() )/ 2;
 				$position.css('left', offset);
 			}
 
@@ -97,9 +115,9 @@
 			
 			// Vertically center the controllers
 			if(settings.centerControls){
-				offset = ($slider.height() - $next.innerHeight()) / 2;
-				$next.css('top', offset);
-				$previous.css('top', offset);
+				offset = ($slider.innerHeight() - $next.innerHeight()) / 2;
+				$next.css('top', offset).show();
+				$previous.css('top', offset).show();
 			}
 	
 		}
