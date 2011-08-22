@@ -1,0 +1,19 @@
+jQuery 'Slidey' plug-in
+
+http://www.jcwd.com.au
+@john0514
+
+Copyright 2011, John Cobb
+Free to all to use, abuse and improve under the MIT license.
+http://www.opensource.org/licenses/mit-license.php
+
+August 2011
+
+=============================================================
+
+A simple, but robust, jQuery slider plug-in. Very basic, simple to use and modify.
+
+TODO:
+
+1. Allow left-right slide transitions as alternative to fade
+2. Allow option to show image caption using title/alt attribute of img
