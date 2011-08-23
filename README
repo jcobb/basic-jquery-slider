@@ -16,6 +16,7 @@ A simple, but robust, jQuery slider plug-in. Very basic, simple to use and modif
 TODO:
 
 - Bug with horizontal slider - goes a bit apeshit when left running in the background
-- Keyboard navigation
 - Code for horizontal sliding could be refactored and optimised
+- Markers should update on click, not after slide animation is complete
+- Keyboard navigation
 - Look at adding captions
