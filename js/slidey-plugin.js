@@ -17,7 +17,6 @@
 	$.fn.slidey = function(options) {
 
 
-
 		/* ============================================================
 		
 		Plug-in initialisation. Define variables, settings, etc
@@ -116,8 +115,6 @@
 		}
 		
 		
-		
-		
 		/* ============================================================
 		
 		If markers are enabled, create them and add them
@@ -166,9 +163,6 @@
 		}
 
 		
-		
-		
-		
 		/* ============================================================
 		
 		If controls are enabled, create them and add them
@@ -207,9 +201,6 @@
 		}
 		
 
-
-
-
 		/* ============================================================
 		
 		Enable pause on hover only if autoRotate is also enabled
@@ -233,8 +224,6 @@
 		}
         
 		
-		
-		
 		/* ============================================================
 		
 		Kick off the rotation if autoRotate is enabled
@@ -245,9 +234,7 @@
           var slideyInterval = setInterval(function(){ slideyGo(fwd) }, settings.rotationSpeed);
         }
 		
-		
-		
-		
+
 		/* ============================================================
 		
 		The function that makes the magic happen
@@ -416,6 +403,8 @@
 		}
 		
 		return this;
+	
+		// KTHXBYE
 	
 	}
 })(jQuery);
