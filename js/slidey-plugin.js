@@ -332,13 +332,8 @@
 			// Horizontal slider		
 			if(settings.animType == 'slide'){
 				
-				console.log('starting slide....');
-			
 				position = $canvas.position();
-				
 				current_slide = ((position.left/settings.width)*-1);
-				
-				console.log('	starting pos: '+current_slide);
 				
 				if(move == 0){
 					
@@ -349,11 +344,9 @@
 						if(new_position == -(settings.width * (slideCount + 1))){
 							$canvas.css('left',-settings.width);
 							current_slide=1;
-							console.log('		next-if: '+current_slide);
 						}
 						else{
 							current_slide++;
-							console.log('		next-else: '+current_slide);
 						}
 						
 						if(settings.showMarkers){
@@ -362,7 +355,6 @@
 						}
 						
 						animating=false;
-						console.log('	ending pos: '+current_slide);
 						
 					});
 
@@ -375,11 +367,9 @@
 						if(new_position == 0){
 							$canvas.css('left',-settings.width*slideCount);
 							current_slide=slideCount;
-							console.log('		prev-if: '+current_slide);
 						}
 						else{
 							current_slide--;
-							console.log('		prev-else: '+current_slide);
 						}
 						
 						if(settings.showMarkers){
@@ -388,7 +378,6 @@
 						}
 						
 						animating=false;
-						console.log('	ending pos: '+current_slide);
 						
 					});
 
@@ -417,7 +406,6 @@
 						}
 						
 						animating=false;
-						console.log('	ending pos: '+current_slide);
 						
 					});
 					

@@ -15,5 +15,7 @@ A simple, but robust, jQuery slider plug-in. Very basic, simple to use and modif
 
 TODO:
 
-1. Allow left-right slide transitions as alternative to fade
-2. Allow option to show image caption using title/alt attribute of img
+- Bug with horizontal slider - goes a bit apeshit when left running in the background
+- Keyboard navigation
+- Code for horizontal sliding could be refactored and optimised
+- Look at adding captions
