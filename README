@@ -1,22 +1,10 @@
-jQuery 'Slidey' plug-in
-
-http://www.jcwd.com.au
-@john0514
-
-Copyright 2011, John Cobb
-Free to all to use, abuse and improve under the MIT license.
-http://www.opensource.org/licenses/mit-license.php
-
-August 2011
-
-=============================================================
-
-A simple, but robust, jQuery slider plug-in. Very basic, simple to use and modify.
+A simple jQuery slider plug-in. Very basic, simple to use and modify.
 
 TODO:
 
-- Bug with horizontal slider - goes a bit apeshit when left running in the background
+- Bug with horizontal slider setting - goes a bit apeshit when left running in the background
 - Code for horizontal sliding could be refactored and optimised
-- Markers should update on click, not after slide animation is complete
-- Keyboard navigation
-- Look at adding captions
+- Markers should update on click, not after slide animation is complete (should be able fix when refactoring)
+- Keyboard navigation (left + right arrow controls)
+- Look at adding/displaying captions using img alt tags
+
