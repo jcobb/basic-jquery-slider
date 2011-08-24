@@ -129,12 +129,12 @@
 			
 			//Create a marker for each banner and add append it to the wrapper
 			$.each(banners,function(key,value){
-				key++
 				if(settings.animType == 'slide'){
-					if(key != 1 && key != banners.length)
+					if(key != 0 && key != banners.length-1)
 						$('<li><a href="#">'+key+'</a></li>').appendTo($marker_wrapper);
 				}
 				else{
+					key++
 					$('<li><a href="#">'+key+'</a></li>').appendTo($marker_wrapper);
 				}
 			});
