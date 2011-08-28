@@ -1,10 +1,14 @@
 A simple jQuery slider plug-in. Very basic, simple to use and modify.
 
+Changes in v1.1
+- Code refactored
+- Improved method for transtions in fade setting
+- Changed slider mark-up to be a unordered list of slides
+- Added caption functionality
+- Added keyboard navigation
+- Added minified script
+- Changed file names
+
+
 TODO:
-
-- Bug with horizontal slider setting - goes a bit apeshit when left running in the background
-- Code for horizontal sliding could be refactored and optimised
-- Markers should update on click, not after slide animation is complete (should be able fix when refactoring)
-- Keyboard navigation (left + right arrow controls)
-- Look at adding/displaying captions using img alt tags
-
+- Test, test, test...

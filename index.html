@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
   
-    <title>Basic jQuery Slider Plug-in</title>
+    <title>Slidey - A basic jQuery slider</title>
   
     <link href='http://fonts.googleapis.com/css?family=Carter+One' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slidey-styles.css">
       
   </head>
   
@@ -14,33 +14,29 @@
   
     <div id="container">
   
-      <!--  The slider wrapper and the child elements we want to
-            rotate through -->
+      <!--  Outer wrapper for presentation only -->
       <div id="banner">
-        <img src="img/banner01.jpg">
-        <img src="img/banner02.jpg">
-        <img src="img/banner03.jpg">
+        <!-- start slidey -->
+        <ul class="slidey">
+          <li><img src="img/banner01.jpg" alt="Automatically generated caption"></li>
+          <li><img src="img/banner02.jpg" ><p class="slidey-caption">Manually added caption</p></li>
+          <li><img src="img/banner03.jpg" alt="Automatically generated caption"></li>
+        </ul>
+        <!-- end slidey -->
       </div>
       
     </div>
   
     <!-- Load jQuery and the plug-in -->
     <script src="js/libs/jquery-1.6.2.min.js"></script>
-    <script defer src="js/slidey-plugin.js"></script>
+    <script defer src="js/jq-slidey-min.js"></script>
     
-    <!--  Attach the plug-in to the slider parent element
-          Adjust the settings as required -->
+    <!--  Attach the plug-in to the slider parent element and adjust the settings as required -->
     <script>
-      $(document).ready(function() {
+    $(document).ready(function() {
       
       $('#banner').slidey({
-          'showControls' : true,
-          'centerControls' : true,
-          'showMarkers' : true,
-          'nextText' : 'next',
-          'prevText' : 'prev',
-          'animType' : 'fade',
-          'autoRotate' : true
+        'animation' : 'slide'
       });
       
     });
