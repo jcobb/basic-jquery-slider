@@ -5,41 +5,47 @@
   
     <title>Slidey - A basic jQuery slider</title>
   
+    <!-- Google Web Fonts for the demo -->
     <link href='http://fonts.googleapis.com/css?family=Carter+One' rel='stylesheet' type='text/css'>
+      
+    <!-- Basic Jquery Slider styles (This is the only essential css file) -->
     <link rel="stylesheet" href="css/slidey-styles.css">
       
   </head>
   
-  <body>
+  <body class="default-demo">
   
     <div id="container">
   
-      <!--  Outer wrapper for presentation only -->
+      <!--  Outer wrapper for presentation only, this can be anything you like -->
       <div id="banner">
-        <!-- start slidey -->
+        <!-- start Basic Jquery Slider -->
         <ul class="slidey">
-          <li><img src="img/banner01.jpg" alt="Automatically generated caption"></li>
-          <li><img src="img/banner02.jpg" ><p class="slidey-caption">Manually added caption</p></li>
-          <li><img src="img/banner03.jpg" alt="Automatically generated caption"></li>
+          <li><img src="img/banner01.jpg" title="Automatically generated caption"></li>
+          <li><img src="img/banner02.jpg" title="Automatically generated caption"></li>
+          <li><img src="img/banner03.jpg" title="Automatically generated caption"></li>
         </ul>
-        <!-- end slidey -->
+        <!-- end Basic jQuery Slider -->
       </div>
+      <!-- End outer wrapper -->
       
     </div>
   
     <!-- Load jQuery and the plug-in -->
     <script src="js/libs/jquery-1.6.2.min.js"></script>
-    <script defer src="js/jq-slidey-min.js"></script>
+    <script src="js/jq-slidey.js"></script>
     
     <!--  Attach the plug-in to the slider parent element and adjust the settings as required -->
     <script>
-    $(document).ready(function() {
-      
-      $('#banner').slidey({
-        'animation' : 'slide'
+      $(document).ready(function() {
+        
+        $('#banner').slidey({
+          'animation' : 'slide',
+          'width' : 700,
+          'height' : 300
+        });
+        
       });
-      
-    });
     </script>
   
   </body>

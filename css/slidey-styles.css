@@ -11,21 +11,20 @@ ol.slidey-markers li{float:left;}
 p.slidey-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bottom:0;}
 
 /* demo styles */
-
-body{
+body.default-demo {
   background:#f5f5f5;
   font-family: 'Carter One', sans-serif;
 }
 
 
-#container{
+.default-demo #container{
   width:980px;
   padding:100px 0;
   margin:0 auto;
   overflow:hidden;
 }
 
-#banner {
+.default-demo #banner {
   height:300px;
   width:700px;
   margin:0 auto;
@@ -35,7 +34,7 @@ body{
   box-shadow:0 0 50px rgba(0,0,0,0.5);
 }
 
-ul.slidey-controls li a{
+.default-demo ul.slidey-controls li a{
   display:block;
   padding:5px 10px;
   position:absolute;
@@ -45,31 +44,31 @@ ul.slidey-controls li a{
   text-transform:uppercase;
 }
 
-ul.slidey-controls li a.slidey-prev{
+.default-demo ul.slidey-controls li a.slidey-prev{
   left:0;
 }
 
-ul.slidey-controls li a.slidey-next{
+.default-demo ul.slidey-controls li a.slidey-next{
   right:0;
 }
 
-p.slidey-caption{
+.default-demo p.slidey-caption{
   background:rgba(0,0,0,0.7);
   color:#fff;
   text-align:center;
 }
 
-ol.slidey-markers{
+.default-demo ol.slidey-markers{
   position:absolute;
   bottom:-50px;
 }
 
-ol.slidey-markers li{
+.default-demo ol.slidey-markers li{
   float:left;
   margin:0 3px;
 }
 
-ol.slidey-markers li a{
+.default-demo ol.slidey-markers li a{
   display:block;
   height:10px;
   width:10px;
@@ -83,4 +82,10 @@ ol.slidey-markers li a{
 
 ol.slidey-markers li.active-marker a{
   background:#fd0100;
+}
+
+
+.bg-demo body{
+  padding:0;
+  margin:0;
 }

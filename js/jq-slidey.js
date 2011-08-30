@@ -31,7 +31,7 @@
 		showMarkers: true,		// Show positional markers
 		centerMarkers: true,	// Center the positional indicators
 		keyboardNav: true,		// Navigated the slider with arrow keys
-		useCaptions: true		// Use image ALT text as caption
+		useCaptions: true		// Use image title text as caption
 	}
 	
 	// Overwrite the defaults with the provided options (if any)
@@ -140,9 +140,11 @@
 			
 			if (!animating) {
 				if(event.keyCode == 39){
+					event.preventDefault();
 					slideyGo(forward, false);
 				}
 				else if(event.keyCode == 37){
+					event.preventDefault();
 					slideyGo(back,false);
 				}
 			}
@@ -162,10 +164,10 @@
 			
 			var $slide = $(value);
 			var $slideChild = $slide.children('img:first-child');
-			var alt = $slideChild.attr('alt');
+			var title = $slideChild.attr('title');
 			
-			if(alt){
-				var $caption = $('<p class="slidey-caption">'+alt+'</p>');
+			if(title){
+				var $caption = $('<p class="slidey-caption">'+title+'</p>');
 				$caption.appendTo($slide);
 			}
 		});
@@ -280,8 +282,10 @@
 			
 			if(settings.animation == 'fade'){
 				
-				markers.eq(current).removeClass('active-marker');
-				markers.eq(next).addClass('active-marker');
+				if(settings.showMarkers){
+					markers.eq(current).removeClass('active-marker');
+					markers.eq(next).addClass('active-marker');
+				}
 				
 				$next = slides.eq(next);
 				
@@ -295,14 +299,18 @@
 			}
 			else if(settings.animation == 'slide'){
 				
-				markers.eq(slidePosition-1).removeClass('active-marker');
-				
-				if(next==slideCount-1){
-					markers.eq(0).addClass('active-marker');
-				}else if(next==0){
-					markers.eq(slideCount-3).addClass('active-marker');
-				}else{
-					markers.eq(next-1).addClass('active-marker');
+				if(settings.showMarkers){
+					
+					markers.eq(slidePosition-1).removeClass('active-marker');
+					
+					if(next==slideCount-1){
+						markers.eq(0).addClass('active-marker');
+					}else if(next==0){
+						markers.eq(slideCount-3).addClass('active-marker');
+					}else{
+						markers.eq(next-1).addClass('active-marker');
+					}
+					
 				}
 				
 				$slider.animate({'left': -next*settings.width}, settings.animationDuration, function(){
