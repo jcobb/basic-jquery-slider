@@ -17,19 +17,19 @@
 	var settings = {};	
 		
 	var defaults = {
-		width: 700,				// Width + Height used to ensure consistency
+		width: 700,			// Width + Height used to ensure consistency
 		height: 300,			// Width + Height used to ensure consistency
 		animation: 'fade',		// The type of animation (slide or fade)
-		animationDuration: 450, // The duration in ms of the transition between slides
-		automatic: true,		// Automatically rotate through the slides
-		rotationSpeed: 4000,	// Delay in ms between auto rotation of the slides
+		animationDuration: 450, 	// The duration in ms of the transition between slides
+		automatic: true,			// Automatically rotate through the slides
+		rotationSpeed: 4000,		// Delay in ms between auto rotation of the slides
 		hoverPause: true,		// Pause the slider when any elements receive a hover event
 		showControls: true,		// Show the manual slider controls
-		centerControls: true,	// Center the controls vertically
+		centerControls: true,		// Center the controls vertically
 		nextText: 'Next',		// Text to display in 'next' controller
 		prevText: "Prev",		// Text to display in 'previous' controller
 		showMarkers: true,		// Show positional markers
-		centerMarkers: true,	// Center the positional indicators
+		centerMarkers: true,		// Center the positional indicators
 		keyboardNav: true,		// Navigated the slider with arrow keys
 		useCaptions: true		// Use image title text as caption
 	}
@@ -149,7 +149,7 @@
 				}
 			}
 			
-			if(paused){
+			if(paused & settings.automatic){
 				slideyInterval = setInterval(function(){ slideyGo(forward) }, settings.rotationSpeed);
 				paused=false;
 			}
