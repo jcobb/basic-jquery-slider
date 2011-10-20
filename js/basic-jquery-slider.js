@@ -1,8 +1,11 @@
 /*
- * jQuery 'Slidey' - Basic jQuery Slider plug-in v.1.1
+ * Basic jQuery Slider plug-in v.1.1
  * 
- * http://www.jcwd.com.au
- * @john0514
+ * http://www.basic-slider.com
+ *
+ * Authored by John Cobb
+ * Visit my blog at http://www.johncobb.name
+ * Or say helo on twitter: @john0514
  *
  * Copyright 2011, John Cobb
  * Free for all to use, abuse and improve under the MIT license.
@@ -12,7 +15,7 @@
  */
 
 (function($){
-	$.fn.slidey = function(options) {
+	$.fn.bjqs = function(options) {
 		
 	var settings = {};	
 		
@@ -39,7 +42,7 @@
 	
 	// Variables
 	var	$container = this;
-		$slider = $('ul.slidey'),
+		$slider = $('ul.bjqs'),
 		slides = $slider.children('li'),
 		slideCount = slides.length,
 		animating = false,
@@ -56,26 +59,29 @@
 	slides.css({'height':settings.height,'width':settings.width});
 	$slider.css({'height':settings.height,'width':settings.width});
 	$container.css({'height':settings.height,'width':settings.width});
+
+	// Add unique class to slide list elements to differentiate from slide content list elements
+	slides.addClass('bjqs-slide');
 	
 	// Phat Controller(s)
 	if(settings.showControls && slideCount > 1){
 		
 		// Create the elements for the controls
-		$controlContainer = $('<ul class="slidey-controls"></ul>');
-		$next = $('<li><a href="#" class="slidey-next" class="controls">'+settings.nextText+'</a></li>');
-		$previous = $('<li><a href="#" class="slidey-prev" class="controls">'+settings.prevText+'</a></li>');
+		$controlContainer = $('<ul class="bjqs-controls"></ul>');
+		$next = $('<li><a href="#" class="bjqs-next" class="controls">'+settings.nextText+'</a></li>');
+		$previous = $('<li><a href="#" class="bjqs-prev" class="controls">'+settings.prevText+'</a></li>');
 		
 		// Bind click events to the controllers
 		$next.click(function(e){
 			e.preventDefault();
 			if(!animating)
-				slideyGo(forward,false);
+				bjqsGo(forward,false);
 		});
 		
 		$previous.click(function(e){
 			e.preventDefault();
 			if(!animating)
-				slideyGo(back, false);
+				bjqsGo(back, false);
 		});
 		
 		// Put 'em all together and what do you get? Ding dong. Hotdog
@@ -96,7 +102,7 @@
 	// Let's put in some markers
 	if(settings.showMarkers && slideCount > 1){
 		
-		$markerContainer = $('<ol class="slidey-markers"></ul>');
+		$markerContainer = $('<ol class="bjqs-markers"></ul>');
 		
 		//Create a marker for each banner and add append it to the wrapper
 		$.each(slides,function(key,value){
@@ -112,7 +118,7 @@
 			$marker.click(function(e){
 				e.preventDefault();
 				if(!$(this).hasClass('active-marker') && !animating)
-					slideyGo(false,key);
+					bjqsGo(false,key);
 			});
 			
 			$marker.appendTo($markerContainer);
@@ -136,23 +142,23 @@
 		$(document).keyup(function(event) {
 			
 			if(!paused){
-				clearInterval(slideyInterval);
+				clearInterval(bjqsInterval);
 				paused=true;
 			}
 			
 			if (!animating) {
 				if(event.keyCode == 39){
 					event.preventDefault();
-					slideyGo(forward, false);
+					bjqsGo(forward, false);
 				}
 				else if(event.keyCode == 37){
 					event.preventDefault();
-					slideyGo(back,false);
+					bjqsGo(back,false);
 				}
 			}
 			
 			if(paused & settings.automatic){
-				slideyInterval = setInterval(function(){ slideyGo(forward) }, settings.rotationSpeed);
+				bjqsInterval = setInterval(function(){ bjqsGo(forward) }, settings.rotationSpeed);
 				paused=false;
 			}
 			
@@ -169,7 +175,7 @@
 			var title = $slideChild.attr('title');
 			
 			if(title){
-				var $caption = $('<p class="slidey-caption">'+title+'</p>');
+				var $caption = $('<p class="bjqs-caption">'+title+'</p>');
 				$caption.appendTo($slide);
 			}
 
@@ -182,12 +188,12 @@
 			
 		$container.hover(function(){
 			if(!paused){
-				clearInterval(slideyInterval);
+				clearInterval(bjqsInterval);
 				paused=true;
 			}
 		},function(){
 			if(paused){
-				slideyInterval = setInterval(function(){ slideyGo(forward) }, settings.rotationSpeed);
+				bjqsInterval = setInterval(function(){ bjqsGo(forward) }, settings.rotationSpeed);
 				paused=false;
 			}
 		});
@@ -207,7 +213,7 @@
 		slides = $slider.children('li');
 		slideCount = slides.length;
 		
-		$wrapper = $('<div class="slidey-wrapper"></div>').css({
+		$wrapper = $('<div class="bjqs-wrapper"></div>').css({
 			'width' : settings.width,
 			'height' : settings.height,
 			'overflow' : 'hidden',
@@ -260,7 +266,7 @@
 	
 	// Kick off the rotation if we're on auto pilot, but only if we have more than 1 slide (thanks Efrain!)
 	if(settings.automatic && slideCount > 1){
-		var slideyInterval = setInterval(function(){ slideyGo(forward,false) }, settings.rotationSpeed);
+		var bjqsInterval = setInterval(function(){ bjqsGo(forward,false) }, settings.rotationSpeed);
 	}
 	
 	// Show the first slide	
@@ -268,7 +274,7 @@
 	$slider.show();
 	
 	// What comes next? Hey, Bust a move!
-	var slideyGo =  function(direction,position){
+	var bjqsGo =  function(direction,position){
 		
 		if(!animating){
 			
