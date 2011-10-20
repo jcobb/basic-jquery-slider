@@ -1,5 +1,5 @@
 /*
- * jQuery 'Slidey' plug-in v.1.1
+ * jQuery 'Slidey' - Basic jQuery Slider plug-in v.1.1
  * 
  * http://www.jcwd.com.au
  * @john0514
@@ -17,21 +17,21 @@
 	var settings = {};	
 		
 	var defaults = {
-		width: 700,			// Width + Height used to ensure consistency
-		height: 300,			// Width + Height used to ensure consistency
-		animation: 'fade',		// The type of animation (slide or fade)
+		width: 700,					// Width + Height used to ensure consistency
+		height: 300,				// Width + Height used to ensure consistency
+		animation: 'fade',			// The type of animation (slide or fade)
 		animationDuration: 450, 	// The duration in ms of the transition between slides
 		automatic: true,			// Automatically rotate through the slides
 		rotationSpeed: 4000,		// Delay in ms between auto rotation of the slides
-		hoverPause: true,		// Pause the slider when any elements receive a hover event
-		showControls: true,		// Show the manual slider controls
+		hoverPause: true,			// Pause the slider when any elements receive a hover event
+		showControls: true,			// Show the manual slider controls
 		centerControls: true,		// Center the controls vertically
-		nextText: 'Next',		// Text to display in 'next' controller
-		prevText: "Prev",		// Text to display in 'previous' controller
-		showMarkers: true,		// Show positional markers
+		nextText: 'Next',			// Text to display in 'next' controller
+		prevText: 'Prev',			// Text to display in 'previous' controller
+		showMarkers: true,			// Show positional markers
 		centerMarkers: true,		// Center the positional indicators
-		keyboardNav: true,		// Navigated the slider with arrow keys
-		useCaptions: true		// Use image title text as caption
+		keyboardNav: true,			// Allow navigation with arrow keys
+		useCaptions: true			// Use image title text as caption
 	}
 	
 	// Overwrite the defaults with the provided options (if any)
@@ -51,12 +51,14 @@
 		forward = 'forward',
 		back = 'backward'
 	
+	// Make everything consistent in size
+	// TODO: move away from px and make slider responsive
 	slides.css({'height':settings.height,'width':settings.width});
 	$slider.css({'height':settings.height,'width':settings.width});
 	$container.css({'height':settings.height,'width':settings.width});
 	
 	// Phat Controller(s)
-	if(settings.showControls){
+	if(settings.showControls && slideCount > 1){
 		
 		// Create the elements for the controls
 		$controlContainer = $('<ul class="slidey-controls"></ul>');
@@ -92,7 +94,7 @@
 	}
 	
 	// Let's put in some markers
-	if(settings.showMarkers){
+	if(settings.showMarkers && slideCount > 1){
 		
 		$markerContainer = $('<ol class="slidey-markers"></ul>');
 		
@@ -129,7 +131,7 @@
 	}
 	
 	// Enable keyboard navigation
-	if(settings.keyboardNav){
+	if(settings.keyboardNav && slideCount > 1){
 		
 		$(document).keyup(function(event) {
 			
@@ -170,11 +172,12 @@
 				var $caption = $('<p class="slidey-caption">'+title+'</p>');
 				$caption.appendTo($slide);
 			}
+
 		});
 		
 	}
 	
-	// Run a bubble-bath and float in that m'fkr like a hovercraft.
+	// Run a bubble-bath and float in that m'fkr like a hovercraft. (enable hover pause)
 	if(settings.hoverPause && settings.automatic){
 			
 		$container.hover(function(){
@@ -193,7 +196,7 @@
 	
 	
 	// We have to make a few tweaks if we're sliding instead of fading
-	if(settings.animation == 'slide'){
+	if(settings.animation == 'slide' && slideCount > 1){
 		
 		$first = slides.eq(0);
 		$last = slides.eq(slideCount-1);
@@ -255,8 +258,8 @@
 		return next;
 	}
 	
-	// Kick off the rotation if we're on auto pilot
-	if(settings.automatic){
+	// Kick off the rotation if we're on auto pilot, but only if we have more than 1 slide (thanks Efrain!)
+	if(settings.automatic && slideCount > 1){
 		var slideyInterval = setInterval(function(){ slideyGo(forward,false) }, settings.rotationSpeed);
 	}
 	
