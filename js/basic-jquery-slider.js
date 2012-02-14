@@ -50,7 +50,7 @@
                 useCaptions: true 
             },
             $container = this,
-            $slider = $('ul.bjqs'),
+            $slider = $container.find('.bjqs'),
             slides = $slider.children('li'),
             slideCount = slides.length,
             animating = false,
