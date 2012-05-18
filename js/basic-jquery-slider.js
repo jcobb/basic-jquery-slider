@@ -35,6 +35,8 @@
                 hoverPause: true,
 				// Show the manual slider controls
                 showControls: true,
+                // Show the manual slider controls when any elements receive a hover event
+                fadeControls: false,
 				// Center the controls vertically
                 centerControls: true,
 				// Text to display in next/prev buttons
@@ -119,6 +121,19 @@
 
                 $next.children('a').css('top', offset).show();
                 $previous.children('a').css('top', offset).show();
+            }
+
+
+            if (settings.fadeControls) {
+                $controlContainer.hide();
+                $container.hover(
+                    function() {
+                        $controlContainer.fadeIn();
+                    },
+                    function() {
+                        $controlContainer.fadeOut();
+                    }
+                );
             }
 
         }
