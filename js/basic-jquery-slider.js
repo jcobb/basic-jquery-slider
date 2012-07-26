@@ -17,7 +17,7 @@
  * 
  */ (function ($) {
     $.fn.bjqs = function (options) {
-		
+		return this.each(function() {
         var settings = {},
             defaults = {
 				// Width + Height used to ensure consistency
@@ -49,7 +49,7 @@
 				// Use image title text as caption
                 useCaptions: true 
             },
-            $container = this,
+            $container = $(this),
             $slider = $container.find('.bjqs'),
             slides = $slider.children('li'),
             slideCount = slides.length,
@@ -379,6 +379,6 @@
 
             }
 
-        return this; // KTHXBYE
+        });
     }
 })(jQuery);
