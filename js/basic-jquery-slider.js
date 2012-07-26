@@ -17,7 +17,7 @@
  * 
  */ (function ($) {
     $.fn.bjqs = function (options) {
-	   return this.each(function() {
+		return this.each(function() {
         var settings = {},
             defaults = {
 				// Width + Height used to ensure consistency
@@ -379,6 +379,6 @@
 
             }
 
-       });
+        });
     }
 })(jQuery);
