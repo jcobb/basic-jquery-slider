@@ -220,9 +220,11 @@
                 }
             }, function () {
                 if (paused) {
-                    bjqsInterval = setInterval(function () {
-                        bjqsGo(forward)
-                    }, settings.rotationSpeed);
+                	if( slideCount > 1 ) {
+	                    bjqsInterval = setInterval(function () {
+        	                bjqsGo(forward)
+                	    }, settings.rotationSpeed);
+                	}
                     paused = false;
                 }
             });
