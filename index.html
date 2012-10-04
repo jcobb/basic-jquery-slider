@@ -4,12 +4,19 @@
     <meta charset="utf-8">
   
     <title>Basic jQuery Slider - Demo</title>
-  
-    <!-- Google Web Fonts for the demo -->
-    <link href='http://fonts.googleapis.com/css?family=Carter+One' rel='stylesheet' type='text/css'>
       
-    <!-- Basic Jquery Slider styles (This is the only essential css file) -->
-    <link rel="stylesheet" href="css/basic-jquery-slider.css">
+    <!-- bjqs.css contains the *essential* css needed for the slider to work -->
+    <link rel="stylesheet" href="bjqs.css">
+
+    <!-- some pretty fonts for this demo page - not required for the slider -->
+    <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300' rel='stylesheet' type='text/css'> 
+
+    <!-- demo.css contains additional styles used to set up this demo page - not required for the slider --> 
+    <link rel="stylesheet" href="demo.css">
+
+    <!-- load jQuery and the plugin -->
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="js/bjqs-1.3.min.js"></script>
       
   </head>
   
@@ -17,8 +24,11 @@
   
     <div id="container">
   
+      <h2>Fade Example</h2>
+
       <!--  Outer wrapper for presentation only, this can be anything you like -->
-      <div id="banner">
+      <div id="banner-fade">
+
         <!-- start Basic Jquery Slider -->
         <ul class="bjqs">
           <li><img src="img/banner01.jpg" title="Automatically generated caption"></li>
@@ -26,27 +36,71 @@
           <li><img src="img/banner03.jpg" title="Automatically generated caption"></li>
         </ul>
         <!-- end Basic jQuery Slider -->
+
+      </div>
+      <!-- End outer wrapper -->
+
+      <script class="secret-source">
+        jQuery(document).ready(function($) {
+
+          $('#banner-fade').bjqs({
+            height      : 320,
+            width       : 620,
+            responsive  : true
+          });
+
+        });
+      </script>
+
+      <h2>Slide Example</h2>
+
+      <!--  Outer wrapper for presentation only, this can be anything you like -->
+      <div id="banner-slide">
+
+        <!-- start Basic Jquery Slider -->
+        <ul class="bjqs">
+          <li><a href=""><img src="img/banner01.jpg" title="Automatically generated caption"></a></li>
+          <li><img src="img/banner02.jpg" title="Automatically generated caption"></li>
+          <li><img src="img/banner03.jpg" title="Automatically generated caption"></li>
+        </ul>
+        <!-- end Basic jQuery Slider -->
+
       </div>
       <!-- End outer wrapper -->
       
-    </div>
-  
-    <!-- Load jQuery and the plug-in -->
-    <script src="js/libs/jquery-1.6.2.min.js"></script>
-    <script src="js/basic-jquery-slider.js"></script>
-    
-    <!--  Attach the plug-in to the slider parent element and adjust the settings as required -->
-    <script>
-      $(document).ready(function() {
-        
-        $('#banner').bjqs({
-          'animation' : 'slide',
-          'width' : 700,
-          'height' : 300
+      <!-- attach the plug-in to the slider parent element and adjust the settings as required -->
+      <script class="secret-source">
+        jQuery(document).ready(function($) {
+          
+          $('#banner-slide').bjqs({
+            animtype      : 'slide',
+            height        : 320,
+            width         : 620,
+            responsive    : true,
+            randomstart   : true
+          });
+          
         });
-        
-      });
+      </script>
+
+    </div>
+
+    <!-- 
+      The following script is not related to basic jQuery Slider 
+      It's used to create the code snippets in the demo.
+      https://github.com/maelstrom/SecretSource
+    -->
+    <script src="js/libs/jquery.secret-source.min.js"></script>
+
+    <script>
+    jQuery(function($) {
+
+        $('.secret-source').secretSource({
+            includeTag: false
+        });
+
+    });
     </script>
-  
+
   </body>
 </html>
