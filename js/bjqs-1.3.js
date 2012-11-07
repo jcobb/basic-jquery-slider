@@ -39,6 +39,7 @@
             prevtext        : 'Prev',   // text/html inside previous UI element
             showmarkers     : true,     // enable/disable individual slide UI markers
             centermarkers   : true,     // horizontally center markers
+			showmarknumbers : true,		// hide and show the number of the slides in the markers
 
             // interaction values
             keyboardnav     : true,     // enable/disable keyboard navigation
@@ -475,8 +476,11 @@
                     // + 2 to account for clones
                     gotoslide = key + 2;
                 }
-
-                var marker = $('<li><a href="#">'+ slidenum +'</a></li>');
+				
+				if(settings.showmarknumbers)
+                	var marker = $('<li><a href="#">'+ slidenum +'</a></li>');
+				else
+					var marker = $('<li><a href="#"></a></li>');
 
                 // set the first marker to be active
                 if(slidenum === state.currentslide){ marker.addClass('active-marker'); }
