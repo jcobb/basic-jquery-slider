@@ -18,7 +18,7 @@
     "use strict";
 
     $.fn.bjqs = function(o) {
-        
+
         // slider default settings
         var defaults        = {
 
@@ -96,7 +96,7 @@
             fwd             : 'forward',
             prev            : 'previous'
         };
-            
+
         // run through options and initialise settings
         var init = function() {
 
@@ -313,9 +313,9 @@
         };
 
         var resize_complete = (function () {
-            
+
             var timers = {};
-            
+
             return function (callback, ms, uniqueId) {
                 if (!uniqueId) {
                     uniqueId = "Don't call this twice without a uniqueId";
@@ -470,7 +470,7 @@
 
                 var slidenum    = key + 1,
                     gotoslide   = key + 1;
-                
+
                 if(settings.animtype === 'slide'){
                     // + 2 to account for clones
                     gotoslide = key + 2;
@@ -585,7 +585,7 @@
         var set_next = function(direction) {
 
             if(direction === vars.fwd){
-                
+
                 if($slides.eq(state.currentindex).next().length){
                     state.nextindex = state.currentindex + 1;
                     state.nextslide = state.currentslide + 1;
@@ -630,7 +630,7 @@
                 // fade animation
                 if(settings.animtype === 'fade'){
 
-                    if(settings.showmarkers){
+                    if(settings.showmarkers && $m_markers !== null){
                         $m_markers.removeClass('active-marker');
                         $m_markers.eq(state.nextindex).addClass('active-marker');
                     }
@@ -652,8 +652,8 @@
                 // slide animation
                 if(settings.animtype === 'slide'){
 
-                    if(settings.showmarkers){
-                        
+                    if(settings.showmarkers && $m_markers !== null){
+
                         var markerindex = state.nextindex-1;
 
                         if(markerindex === state.slidecount-2){
