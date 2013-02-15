@@ -144,6 +144,9 @@
                     conf_slide();
                 }
 
+            } else {
+                // Stop automatic animation, because we only have one slide! 
+                settings.automatic = false;
             }
 
             if(settings.usecaptions){
