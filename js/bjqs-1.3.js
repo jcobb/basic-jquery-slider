@@ -46,8 +46,9 @@
 
             // presentational options
             usecaptions     : true,     // enable/disable captions using img title attribute
-            randomstart     : false,     // start from a random slide
-            responsive      : false     // enable responsive behaviour
+            randomstart     : false,    // start from a random slide
+            responsive      : false,    // enable responsive behaviour
+            showslidenumbers: true      //show the slide number in the marker            
 
         };
 
@@ -479,7 +480,7 @@
                     gotoslide = key + 2;
                 }
 
-                var marker = $('<li><a href="#">'+ slidenum +'</a></li>');
+                var marker = settings.showslidenumbers ? $('<li><a href="#">' + slidenum + '</a></li>') : $('<li><a href="#"></a></li>');
 
                 // set the first marker to be active
                 if(slidenum === state.currentslide){ marker.addClass('active-marker'); }
