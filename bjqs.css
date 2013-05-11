@@ -10,4 +10,5 @@ ol.bjqs-markers{list-style: none; padding: 0; margin: 0; width:100%;}
 ol.bjqs-markers.h-centered{text-align: center;}
 ol.bjqs-markers li{display:inline;}
 ol.bjqs-markers li a{display:inline-block;}
-p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bottom:0;}
+.bjqs-caption{width:100%;position:absolute;bottom:0;}
+.bjqs-caption > .inner{display:block;padding:2%;margin:0;}
