@@ -43,6 +43,7 @@
             // interaction values
             keyboardnav     : true,     // enable/disable keyboard navigation
             hoverpause      : true,     // enable/disable pause slides on hover
+            hoverplay      : false,     // enable/disable play slides on hover
 
             // presentational options
             usecaptions     : true,     // enable/disable captions using img title attribute
@@ -137,6 +138,11 @@
                 // enable pause on hover
                 if (settings.hoverpause && settings.automatic){
                     conf_hoverpause();
+                }
+
+                // enable play on hover
+                if (settings.hoverplay && !settings.automatic){
+                    conf_hoverplay();
                 }
 
                 // conf slide animation
@@ -551,6 +557,24 @@
                     state.interval = setInterval(function () {
                         go(vars.fwd, false);
                     }, settings.animspeed);
+                    state.paused = false;
+                }
+            });
+
+        };
+
+        var conf_hoverplay = function() {
+
+            $wrapper.hover(function () {
+                if (!state.paused) {
+                    state.interval = setInterval(function () {
+                        go(vars.fwd, false);
+                    }, settings.animspeed);
+                    state.paused = true;
+                }
+            }, function () {
+                if (state.paused) {
+                    clearInterval(state.interval);
                     state.paused = false;
                 }
             });
