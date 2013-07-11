@@ -560,7 +560,7 @@
         var conf_captions = function() {
 
             $.each($slides, function (key, slide) {
-
+				var captionContainer;
                 var caption = $(slide).children('img:first-child').attr('title');
 
                 // Account for images wrapped in links
@@ -569,7 +569,8 @@
                 }
 
                 if (caption) {
-                    caption = $('<p class="bjqs-caption">' + caption + '</p>');
+					captionContainer = $('<p />').addClass('bjqs-caption');
+                    caption = captionContainer.html(caption);
                     caption.appendTo($(slide));
                 }
 
