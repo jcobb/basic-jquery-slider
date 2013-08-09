@@ -37,7 +37,8 @@ pre + h2{
 }
 
 #banner-fade,
-#banner-slide{
+#banner-slide,
+#banner-touch{
 	margin-bottom: 60px;
 }
 

@@ -16,7 +16,7 @@
 
     <!-- load jQuery and the plugin -->
     <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script src="js/bjqs-1.3.min.js"></script>
+    <script src="js/bjqs-1.3.js"></script>
       
   </head>
   
@@ -78,6 +78,39 @@
             width         : 620,
             responsive    : true,
             randomstart   : true
+          });
+          
+        });
+      </script>
+
+      <h2>Touch Example</h2>
+
+      <!--  Outer wrapper for presentation only, this can be anything you like -->
+      <div id="banner-touch">
+
+        <!-- start Basic Jquery Slider -->
+        <ul class="bjqs">
+          <li><a href=""><img src="img/banner01.jpg" title="Automatically generated caption"></a></li>
+          <li><img src="img/banner02.jpg" title="Automatically generated caption"></li>
+          <li><img src="img/banner03.jpg" title="Automatically generated caption"></li>
+        </ul>
+        <!-- end Basic jQuery Slider -->
+
+      </div>
+      <!-- End outer wrapper -->
+      
+      <!-- attach the plug-in to the slider parent element and adjust the settings as required -->
+      <script class="secret-source">
+        jQuery(document).ready(function($) {
+          
+          $('#banner-touch').bjqs({
+            animtype      : 'slide',
+            height        : 320,
+            width         : 620,
+            responsive    : true,
+            showcontrols  : false,
+            automatic     : false,
+            touch         : true
           });
           
         });

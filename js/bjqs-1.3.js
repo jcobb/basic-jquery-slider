@@ -47,7 +47,11 @@
             // presentational options
             usecaptions     : true,     // enable/disable captions using img title attribute
             randomstart     : false,     // start from a random slide
-            responsive      : false     // enable responsive behaviour
+            responsive      : false,     // enable responsive behaviour
+
+            // touch options
+            touch           : false,    // enable/disable touch support for phones/tables
+            draglimit       : 80        // amount of pixels to move before going to next slide 
 
         };
 
@@ -151,6 +155,10 @@
 
             if(settings.usecaptions){
                 conf_captions();
+            }
+            // 
+            if(settings.touch){
+                conf_touch();
             }
 
             // TODO: need to accomodate random start for slide transition setting
@@ -584,6 +592,48 @@
             state.currentindex  = rand-1;
 
         };
+
+        var conf_touch = function() {
+
+            var dragging = false;
+            var drag_start, drag_dist = 0;
+
+            // Assign data on touch
+            $slider.on('touchstart', function(e) {
+                e.preventDefault();
+                clearInterval(state.interval);
+
+                // Assign variables for touch event, touch start position and start dragging
+                var touch = e.originalEvent.touches[0];
+                drag_start = touch.pageX;
+                dragging = true;
+            });
+
+            // Actual functionality for movement
+            $slider.on('touchmove', function(e) {
+                e.preventDefault();
+
+                // Assign variables for touch event and distance draged
+                var touch = e.originalEvent.touches[0];
+                drag_dist = touch.pageX - drag_start;
+
+                // Handle drag limits
+                if(dragging && (drag_dist > settings.draglimit || drag_dist < -settings.draglimit)) {
+                    dragging = false;
+                    go((drag_dist > 0) ? vars.prev : vars.fwd);
+                }
+
+            });
+
+            // Make sure we reset data on release
+            $slider.on('touchend', function(e) {
+                e.preventDefault();
+
+                drag_start, drag_dist = 0;
+                dragging = false;
+            });
+
+        }
 
         var set_next = function(direction) {
 
