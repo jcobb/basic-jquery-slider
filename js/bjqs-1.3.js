@@ -264,7 +264,8 @@
                 if(responsive.width < settings.width){
 
                     $slides.css({
-                        'height'        : responsive.height
+                        'height'        : responsive.height,
+                        'width'         : responsive.width
                     });
                     $slides.children('img').css({
                         'height'        : responsive.height
