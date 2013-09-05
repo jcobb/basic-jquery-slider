@@ -41,7 +41,7 @@ pre + h2{
 	margin-bottom: 60px;
 }
 
-ul.bjqs-controls.v-centered li a{
+ul.bjqs-controls.v-centered li span{
 	display:block;
 	padding:10px;
 	background:#fff;
@@ -49,12 +49,12 @@ ul.bjqs-controls.v-centered li a{
 	text-decoration: none;
 }
 
-ul.bjqs-controls.v-centered li a:hover{
+ul.bjqs-controls.v-centered li span:hover{
 	background:#000;
 	color:#fff;
 }
 
-ol.bjqs-markers li a{
+ol.bjqs-markers li span{
 	padding:5px 10px;
 	background:#000;
 	color:#fff;
@@ -62,8 +62,8 @@ ol.bjqs-markers li a{
 	text-decoration: none;
 }
 
-ol.bjqs-markers li.active-marker a,
-ol.bjqs-markers li a:hover{
+ol.bjqs-markers li.active-marker span,
+ol.bjqs-markers li span:hover{
 	background: #999;
 }
 
