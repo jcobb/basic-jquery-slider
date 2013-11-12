@@ -154,7 +154,7 @@
             }
 
             // TODO: need to accomodate random start for slide transition setting
-            if(settings.animtype === 'slide' && !settings.randomstart){
+            if(settings.animtype === 'slide' && !settings.randomstart && slidecount>1){
                 state.currentindex = 1;
                 state.currentslide = 2;
             }
