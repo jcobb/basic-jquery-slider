@@ -185,7 +185,7 @@
                     'height'        : settings.height,
                     'width'         : '100%'
                 });
-                $slides.children('img').css({
+                $slides.find('img').css({
                     'height'        : settings.height,
                     'width'         : '100%'
                 });
@@ -204,7 +204,7 @@
                     $slides.css({
                         'height'        : responsive.height
                     });
-                    $slides.children('img').css({
+                    $slides.find('img').css({
                         'height'        : responsive.height
                     });
                     $slider.css({
@@ -226,7 +226,7 @@
                     $slides.css({
                         'height'        : responsive.height
                     });
-                    $slides.children('img').css({
+                    $slides.find('img').css({
                         'height'        : responsive.height
                     });
                     $slider.css({
@@ -247,7 +247,7 @@
                     'height'        : settings.height,
                     'width'         : settings.width
                 });
-                $slides.children('img').css({
+                $slides.find('img').css({
                     'height'        : settings.height,
                     'width'         : settings.width
                 });
@@ -266,7 +266,7 @@
                     $slides.css({
                         'height'        : responsive.height
                     });
-                    $slides.children('img').css({
+                    $slides.find('img').css({
                         'height'        : responsive.height
                     });
                     $slider.css({
@@ -289,7 +289,7 @@
                         'height'        : responsive.height,
                         'width'         : responsive.width
                     });
-                    $slides.children('img').css({
+                    $slides.find('img').css({
                         'height'        : responsive.height,
                         'width'         : responsive.width
                     });
