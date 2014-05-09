@@ -1,4 +1,6 @@
 ##TODO
+- make slider configurable after init
+- allow multiple slider in one page
 
 A simple jQuery slider plug-in. Very basic, simple to use and modify.
 
