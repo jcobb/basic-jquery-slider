@@ -558,8 +558,7 @@
             // center the markers
             if (settings.centermarkers) {
                 $m_wrapper.addClass('h-centered');
-                $m_wrapper.css('display', 'inline-block');
-                $m_wrapper.css('margin', '0 auto');
+                $m_wrapper.css('text-align', 'center');
             }
 
         };
