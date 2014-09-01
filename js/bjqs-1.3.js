@@ -237,7 +237,7 @@
                     });
 
                 });
-                
+
                 $(window).resize(function() {
 
                     // calculate and update dimensions
@@ -299,7 +299,7 @@
                     });
 
                 }
-                
+
                 $(document).ready(function() {
 
                     // calculate and update dimensions
@@ -330,7 +330,7 @@
                     resize_complete(function(){
                         go(false,state.currentslide);
                     }, 200, "some unique string");
-
+                    
                 });
 
                 $(window).resize(function() {
@@ -558,8 +558,8 @@
             // center the markers
             if (settings.centermarkers) {
                 $m_wrapper.addClass('h-centered');
-                var offset = (settings.width - $m_wrapper.width()) / 2;
-                $m_wrapper.css('left', offset);
+                $m_wrapper.css('display', 'inline-block');
+                $m_wrapper.css('margin', '0 auto');
             }
 
         };
