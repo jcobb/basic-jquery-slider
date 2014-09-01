@@ -216,6 +216,28 @@
 
                 }
 
+                $(document).ready(function() {
+
+                    // calculate and update dimensions
+                    responsive.width    = $wrapper.outerWidth();
+                    responsive.ratio    = responsive.width/settings.width,
+                    responsive.height   = settings.height * responsive.ratio;
+
+                    $slides.css({
+                        'height'        : responsive.height
+                    });
+                    $slides.children('img').css({
+                        'height'        : responsive.height
+                    });
+                    $slider.css({
+                        'height'        : responsive.height
+                    });
+                    $wrapper.css({
+                        'height'        : responsive.height
+                    });
+
+                });
+                
                 $(window).resize(function() {
 
                     // calculate and update dimensions
@@ -277,6 +299,39 @@
                     });
 
                 }
+                
+                $(document).ready(function() {
+
+                    // calculate and update dimensions
+                    responsive.width    = $wrapper.outerWidth(),
+                    responsive.ratio    = responsive.width/settings.width,
+                    responsive.height   = settings.height * responsive.ratio;
+
+                    $slides.css({
+                        'height'        : responsive.height,
+                        'width'         : responsive.width
+                    });
+                    $slides.children('img').css({
+                        'height'        : responsive.height,
+                        'width'         : responsive.width
+                    });
+                    $slider.css({
+                        'height'        : responsive.height,
+                        'width'         : responsive.width * settings.slidecount
+                    });
+                    $wrapper.css({
+                        'height'        : responsive.height
+                    });
+                    $canvas.css({
+                        'height'        : responsive.height,
+                        'width'         : responsive.width
+                    });
+
+                    resize_complete(function(){
+                        go(false,state.currentslide);
+                    }, 200, "some unique string");
+
+                });
 
                 $(window).resize(function() {
 
