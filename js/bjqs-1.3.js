@@ -618,6 +618,11 @@
 
             // only if we're not already doing things
             if(!state.animating){
+                
+                // execute a hook function
+                if(typeof(settings.ongo) === "function") {
+                    settings.ongo();
+                }
 
                 // doing things
                 state.animating = true;
