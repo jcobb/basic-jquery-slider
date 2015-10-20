@@ -47,7 +47,10 @@
             // presentational options
             usecaptions     : true,     // enable/disable captions using img title attribute
             randomstart     : false,     // start from a random slide
-            responsive      : false     // enable responsive behaviour
+            responsive      : false,     // enable responsive behaviour
+            
+            // events
+            onChange        : false
 
         };
 
@@ -629,6 +632,10 @@
                 else{
                     set_next(direction);
                 }
+                
+                if(settings.onChange) {
+                    settings.onChange(state);                        
+                }
 
                 // fade animation
                 if(settings.animtype === 'fade'){
@@ -637,7 +644,7 @@
                         $m_markers.removeClass('active-marker');
                         $m_markers.eq(state.nextindex).addClass('active-marker');
                     }
-
+                    
                     // fade out current
                     $slides.eq(state.currentindex).fadeOut(settings.animduration);
                     // fade in next
