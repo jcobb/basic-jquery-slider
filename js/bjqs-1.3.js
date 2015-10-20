@@ -251,6 +251,10 @@
                     'height'        : settings.height,
                     'width'         : settings.width
                 });
+                $slides.children('a').children('img').css({
+                    'height'        : settings.height,
+                    'width'         : settings.width
+                });
                 $slider.css({
                     'height'        : settings.height,
                     'width'         : settings.width * settings.slidecount
@@ -264,13 +268,20 @@
                 if(responsive.width < settings.width){
 
                     $slides.css({
-                        'height'        : responsive.height
+                        'height'        : responsive.height,
+                        'width'         : responsive.width
                     });
                     $slides.children('img').css({
-                        'height'        : responsive.height
+                        'height'        : responsive.height,
+                        'width'         : responsive.width
+                    });
+                    $slides.children('a').children('img').css({
+                        'height'        : responsive.height,
+                        'width'         : responsive.width
                     });
                     $slider.css({
-                        'height'        : responsive.height
+                        'height'        : responsive.height,
+                        'width'         : responsive.width * settings.slidecount
                     });
                     $wrapper.css({
                         'height'        : responsive.height
@@ -290,6 +301,10 @@
                         'width'         : responsive.width
                     });
                     $slides.children('img').css({
+                        'height'        : responsive.height,
+                        'width'         : responsive.width
+                    });
+                    $slides.children('a').children('img').css({
                         'height'        : responsive.height,
                         'width'         : responsive.width
                     });
