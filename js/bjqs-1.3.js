@@ -711,6 +711,19 @@
 
         };
 
+		// Allow for specific slides to be activated immediately 
+        window.goToSlide = function (slide) {
+		
+            var gotoslide = slide + 1;
+
+            if (settings.animtype === 'slide') {
+                // + 2 to account for clones
+                gotoslide = slide + 2;
+            }
+
+            go(false, gotoslide);
+        };
+		
         // lets get the party started :)
         init();
 
