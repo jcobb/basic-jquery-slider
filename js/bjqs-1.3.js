@@ -451,13 +451,12 @@
 
                 $c_wrapper.addClass('v-centered');
 
-                // calculate offset % for vertical positioning
+                // vertically center prev and next
                 var offset_px   = ($wrapper.height() - $c_fwd.children('a').outerHeight()) / 2,
-                    ratio       = (offset_px / settings.height) * 100,
-                    offset      = ratio + '%';
+                	link_height 	= $c_fwd.children('a').outerHeight();
 
-                $c_fwd.find('a').css('top', offset);
-                $c_prev.find('a').css('top', offset);
+                $c_fwd.find('a').css({'top' : '50%', 'margin-top' : link_height / -2 });
+                $c_prev.find('a').css({'top' : '50%', 'margin-top' : link_height / -2 });
 
             }
 
