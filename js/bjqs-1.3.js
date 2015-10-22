@@ -418,11 +418,11 @@
 
             // create the elements for the controls
             $c_wrapper  = $('<ul class="bjqs-controls"></ul>');
-            $c_fwd      = $('<li class="bjqs-next"><a href="#" data-direction="'+ vars.fwd +'">' + settings.nexttext + '</a></li>');
-            $c_prev     = $('<li class="bjqs-prev"><a href="#" data-direction="'+ vars.prev +'">' + settings.prevtext + '</a></li>');
+            $c_fwd      = $('<li class="bjqs-next"><span data-direction="'+ vars.fwd +'">' + settings.nexttext + '</span></li>');
+            $c_prev     = $('<li class="bjqs-prev"><span data-direction="'+ vars.prev +'">' + settings.prevtext + '</span></li>');
 
             // bind click events
-            $c_wrapper.on('click','a',function(e){
+            $c_wrapper.on('click','span',function(e){
 
                 e.preventDefault();
                 var direction = $(this).attr('data-direction');
@@ -479,13 +479,13 @@
                     gotoslide = key + 2;
                 }
 
-                var marker = $('<li><a href="#">'+ slidenum +'</a></li>');
+                var marker = $('<li><span>'+ slidenum +'</span></li>');
 
                 // set the first marker to be active
                 if(slidenum === state.currentslide){ marker.addClass('active-marker'); }
 
                 // bind the click event
-                marker.on('click','a',function(e){
+                marker.on('click','span',function(e){
                     e.preventDefault();
                     if(!state.animating && state.currentslide !== gotoslide){
                         go(false,gotoslide);
