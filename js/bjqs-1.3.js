@@ -710,6 +710,15 @@
             }
 
         };
+        
+        var goto = function(position){
+            state.animating = false;
+            if(settings.animtype === "slide")
+                position = position + 1;
+            go(false,position);
+        }
+
+        $.fn.bjqs.goto = goto;
 
         // lets get the party started :)
         init();
