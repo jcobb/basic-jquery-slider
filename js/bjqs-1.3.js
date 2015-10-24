@@ -163,14 +163,35 @@
             $slider.show();
             $slides.eq(state.currentindex).show();
 
-            // Finally, if automatic is set to true, kick off the interval
+            // Finally, if automatic is set to true, play 
             if(settings.automatic){
-                state.interval = setInterval(function () {
-                    go(vars.fwd, false);
-                }, settings.animspeed);
+                play( false );
             }
 
         };
+
+        var play = function( immediate ) {
+            // if there's an interval already set, bail
+            if( state.interval !== null ) return;
+            
+            // kick off the interval
+            state.interval = setInterval(function () {
+                    go(vars.fwd, false);
+                }, settings.animspeed);
+           
+            // start immediately if we've been asked 
+            if( immediate ) go(vars.fwd, false);
+        };
+        // public accessor
+        $wrapper.play = play;
+
+        var stop = function()
+        {
+            clearInterval( state.interval );
+            state.interval = null;
+        };
+        // public accessor
+        $wrapper.stop = stop;
 
         var conf_responsive = function() {
 
@@ -630,6 +651,8 @@
                     set_next(direction);
                 }
 
+                var outgoingindex = state.currentindex-1;
+
                 // fade animation
                 if(settings.animtype === 'fade'){
 
@@ -647,6 +670,10 @@
                         state.animating = false;
                         state.currentslide = state.nextslide;
                         state.currentindex = state.nextindex;
+
+                        // emit slide change event
+                        var e = jQuery.Event( "slidechange", { outgoingindex: outgoingindex, incomingindex: state.currentindex-1 } );
+                        $wrapper.trigger( e );
 
                     });
 
@@ -703,14 +730,31 @@
 
                         state.animating = false;
 
+                        // emit slide change event
+                        var e = jQuery.Event( "slidechange", { outgoingindex: outgoingindex, incomingindex: state.currentindex-1 } );
+                        $wrapper.trigger( e );
+
                     });
 
                 }
-
             }
-
         };
 
+        $wrapper.toggleControls = function( show, duration ) {
+            if( !duration && duration !== 0 ) duration = defaults.animduration;
+            $c_fwd      = $wrapper.find( "li.bjqs-next a" );
+            $c_prev     = $wrapper.find( "li.bjqs-prev a" );
+            if( $c_fwd.length > 0 && $c_prev.length > 0 ){
+                if( show ) {
+                    $c_fwd.fadeIn( duration );
+                    $c_prev.fadeIn( duration );
+                } else {
+                    $c_fwd.fadeOut( duration );
+                    $c_prev.fadeOut( duration );
+                }
+            }
+        };
+        
         // lets get the party started :)
         init();
 
