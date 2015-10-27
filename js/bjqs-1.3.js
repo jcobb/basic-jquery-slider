@@ -46,8 +46,9 @@
 
             // presentational options
             usecaptions     : true,     // enable/disable captions using img title attribute
-            randomstart     : false,     // start from a random slide
-            responsive      : false     // enable responsive behaviour
+            randomstart     : false,    // start from a random slide
+            responsive      : false,    // enable responsive behaviour
+            ongo            : undefined // a hook function that will be executed upon transition
 
         };
 
@@ -615,7 +616,6 @@
         };
 
         var go = function(direction, position) {
-
             // only if we're not already doing things
             if(!state.animating){
 
@@ -648,6 +648,10 @@
                         state.currentslide = state.nextslide;
                         state.currentindex = state.nextindex;
 
+                        // execute a hook function
+                        if(typeof(settings.ongo) === "function") {
+                            settings.ongo();
+                        }
                     });
 
                 }
@@ -702,7 +706,11 @@
                         }
 
                         state.animating = false;
-
+                        
+                        // execute a hook function
+                        if(typeof(settings.ongo) === "function") {
+                            settings.ongo();
+                        }
                     });
 
                 }
