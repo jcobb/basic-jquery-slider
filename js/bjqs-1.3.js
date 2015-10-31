@@ -39,6 +39,7 @@
             prevtext        : 'Prev',   // text/html inside previous UI element
             showmarkers     : true,     // enable/disable individual slide UI markers
             centermarkers   : true,     // horizontally center markers
+            showslidenumbers: false,    // enable/disable numbers on slide UI markers
 
             // interaction values
             keyboardnav     : true,     // enable/disable keyboard navigation
@@ -47,7 +48,7 @@
             // presentational options
             usecaptions     : true,     // enable/disable captions using img title attribute
             randomstart     : false,     // start from a random slide
-            responsive      : false     // enable responsive behaviour
+            responsive      : false     // enable responsive behaviour            
 
         };
 
@@ -479,7 +480,8 @@
                     gotoslide = key + 2;
                 }
 
-                var marker = $('<li><a href="#">'+ slidenum +'</a></li>');
+                var slidetext = settings.showslidenumbers ? slidenum : '';
+                var marker = $('<li><a href="#">'+ slidetext +'</a></li>');
 
                 // set the first marker to be active
                 if(slidenum === state.currentslide){ marker.addClass('active-marker'); }
