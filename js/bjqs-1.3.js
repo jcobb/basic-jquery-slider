@@ -112,7 +112,7 @@
             }
 
             // configurations only avaliable if more than 1 slide
-            if( state.slidecount > 1 ){
+            if( state.slidecount >= 1 ){
 
                 // enable random start
                 if (settings.randomstart){
