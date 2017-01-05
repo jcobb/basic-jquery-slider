@@ -18,7 +18,7 @@
     "use strict";
 
     $.fn.bjqs = function(o) {
-        
+
         // slider default settings
         var defaults        = {
 
@@ -96,7 +96,7 @@
             fwd             : 'forward',
             prev            : 'previous'
         };
-            
+
         // run through options and initialise settings
         var init = function() {
 
@@ -145,7 +145,7 @@
                 }
 
             } else {
-                // Stop automatic animation, because we only have one slide! 
+                // Stop automatic animation, because we only have one slide!
                 settings.automatic = false;
             }
 
@@ -300,10 +300,12 @@
                     $wrapper.css({
                         'height'        : responsive.height
                     });
-                    $canvas.css({
-                        'height'        : responsive.height,
-                        'width'         : responsive.width
-                    });
+                    if($canvas !== null){
+                        $canvas.css({
+                            'height'        : responsive.height,
+                            'width'         : responsive.width
+                        });
+                    }
 
                     resize_complete(function(){
                         go(false,state.currentslide);
@@ -316,9 +318,9 @@
         };
 
         var resize_complete = (function () {
-            
+
             var timers = {};
-            
+
             return function (callback, ms, uniqueId) {
                 if (!uniqueId) {
                     uniqueId = "Don't call this twice without a uniqueId";
@@ -473,7 +475,7 @@
 
                 var slidenum    = key + 1,
                     gotoslide   = key + 1;
-                
+
                 if(settings.animtype === 'slide'){
                     // + 2 to account for clones
                     gotoslide = key + 2;
@@ -588,7 +590,7 @@
         var set_next = function(direction) {
 
             if(direction === vars.fwd){
-                
+
                 if($slides.eq(state.currentindex).next().length){
                     state.nextindex = state.currentindex + 1;
                     state.nextslide = state.currentslide + 1;
@@ -656,7 +658,7 @@
                 if(settings.animtype === 'slide'){
 
                     if(settings.showmarkers){
-                        
+
                         var markerindex = state.nextindex-1;
 
                         if(markerindex === state.slidecount-2){
@@ -665,9 +667,10 @@
                         else if(markerindex === -1){
                             markerindex = state.slidecount-3;
                         }
-
-                        $m_markers.removeClass('active-marker');
-                        $m_markers.eq(markerindex).addClass('active-marker');
+                        if($m_markers !== null){
+                            $m_markers.removeClass('active-marker');
+                            $m_markers.eq(markerindex).addClass('active-marker');
+                        }
                     }
 
                     // if the slider is responsive && the calculated width is less than the max width
