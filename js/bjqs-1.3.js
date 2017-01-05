@@ -479,7 +479,7 @@
                     gotoslide = key + 2;
                 }
 
-                var marker = $('<li><a href="#">'+ slidenum +'</a></li>');
+                var marker = $('<li><a href="#"></a></li>');
 
                 // set the first marker to be active
                 if(slidenum === state.currentslide){ marker.addClass('active-marker'); }
