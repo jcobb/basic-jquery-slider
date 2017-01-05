@@ -465,8 +465,11 @@
 
         var conf_markers = function() {
 
-            // create a wrapper for our markers
-            $m_wrapper = $('<ol class="bjqs-markers"></ol>');
+            $m_wrapper = $("ol[class='bjqs-markers']");
+
+            if($m_wrapper.length==0) {
+              $m_wrapper = $('<ol class="bjqs-markers"></ol>').appendTo($wrapper);
+            }
 
             // for every slide, create a marker
             $.each($slides, function(key, slide){
@@ -497,7 +500,7 @@
 
             });
 
-            $m_wrapper.appendTo($wrapper);
+            //$m_wrapper.appendTo($wrapper);
             $m_markers = $m_wrapper.find('li');
 
             // center the markers
