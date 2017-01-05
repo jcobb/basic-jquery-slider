@@ -7,6 +7,11 @@
  * http://www.johncobb.name
  * @john0514
  *
+ *
+ * Updated by Zack Chen
+ * http://lovecicy.com
+ * @yu521088
+ *
  * Copyright 2011, John Cobb
  * License: GNU General Public License, version 3 (GPL-3.0)
  * http://www.opensource.org/licenses/gpl-3.0.html
@@ -16,46 +21,68 @@
 ;(function($) {
 
     "use strict";
-
-    $.fn.bjqs = function(o) {
         
-        // slider default settings
-        var defaults        = {
+    // slider default settings
+    var defaults        = {
 
-            // w + h to enforce consistency
-            width           : 700,
-            height          : 300,
+        // w + h to enforce consistency
+        width           : 700,
+        height          : 300,
 
-            // transition valuess
-            animtype        : 'fade',
-            animduration    : 450,      // length of transition
-            animspeed       : 4000,     // delay between transitions
-            automatic       : true,     // enable/disable automatic slide rotation
+        // transition valuess
+        animtype        : 'fade',
+        animduration    : 450,      // length of transition
+        animspeed       : 4000,     // delay between transitions
+        automatic       : true,     // enable/disable automatic slide rotation
 
-            // control and marker configuration
-            showcontrols    : true,     // enable/disable next + previous UI elements
-            centercontrols  : true,     // vertically center controls
-            nexttext        : 'Next',   // text/html inside next UI element
-            prevtext        : 'Prev',   // text/html inside previous UI element
-            showmarkers     : true,     // enable/disable individual slide UI markers
-            centermarkers   : true,     // horizontally center markers
+        // control and marker configuration
+        showcontrols    : true,     // enable/disable next + previous UI elements
+        centercontrols  : true,     // vertically center controls
+        nexttext        : 'Next',   // text/html inside next UI element
+        prevtext        : 'Prev',   // text/html inside previous UI element
+        showmarkers     : true,     // enable/disable individual slide UI markers
+        centermarkers   : true,     // horizontally center markers
 
-            // interaction values
-            keyboardnav     : true,     // enable/disable keyboard navigation
-            hoverpause      : true,     // enable/disable pause slides on hover
+        // interaction values
+        keyboardnav     : true,     // enable/disable keyboard navigation
+        hoverpause      : true,     // enable/disable pause slides on hover
 
-            // presentational options
-            usecaptions     : true,     // enable/disable captions using img title attribute
-            randomstart     : false,     // start from a random slide
-            responsive      : false     // enable responsive behaviour
+        // presentational options
+        usecaptions     : true,     // enable/disable captions using img title attribute
+        randomstart     : false,     // start from a random slide
+        responsive      : false     // enable responsive behaviour
 
-        };
+    };
 
-        // create settings from defauls and user options
-        var settings        = $.extend({}, defaults, o);
+    var methods = {
+        init: function(options){
+            // create settings from defauls and user options
+            var settings = $.extend({}, defaults, options);
+            return this.each(function(){
+                $(this).data('settings',settings);
+                $(this).data('bjqs', new BJQS(this, settings));
+            });
+        },
+        pause: function(){
+            return this.data('bjqs').pause();
+        },
+        unpause: function(){
+            return this.data('bjqs').unpause();
+        }
+    };
+
+    $.fn.bjqs = function(method){
+        if(methods[method]){
+            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+        }else{
+            return methods['init'].apply(this, arguments);
+        }
+    };
+
+    function BJQS(wrapper, settings) {
 
         // slider elements
-        var $wrapper        = this,
+        var $wrapper        = $(wrapper),
             $slider         = $wrapper.find('ul.bjqs'),
             $slides         = $slider.children('li'),
 
@@ -96,6 +123,8 @@
             fwd             : 'forward',
             prev            : 'previous'
         };
+
+        var that = this;
             
         // run through options and initialise settings
         var init = function() {
@@ -170,6 +199,22 @@
                 }, settings.animspeed);
             }
 
+        };
+
+        this.pause = function pause() {
+            if (!state.paused) {
+                clearInterval(state.interval);
+                state.paused = true;
+            }
+        };
+
+        this.unpause = function unpause() {
+            if (state.paused) {
+                state.interval = setInterval(function () {
+                    go(vars.fwd, false);
+                }, settings.animspeed);
+                state.paused = false;
+            }
         };
 
         var conf_responsive = function() {
@@ -540,19 +585,10 @@
         };
 
         var conf_hoverpause = function() {
-
             $wrapper.hover(function () {
-                if (!state.paused) {
-                    clearInterval(state.interval);
-                    state.paused = true;
-                }
+                that.pause();
             }, function () {
-                if (state.paused) {
-                    state.interval = setInterval(function () {
-                        go(vars.fwd, false);
-                    }, settings.animspeed);
-                    state.paused = false;
-                }
+                that.unpause();
             });
 
         };
