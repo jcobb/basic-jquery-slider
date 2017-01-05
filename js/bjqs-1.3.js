@@ -569,7 +569,7 @@
                 }
 
                 if (caption) {
-                    caption = $('<p class="bjqs-caption">' + caption + '</p>');
+                    caption = $('<div class="bjqs-caption"><p class="inner">' + caption + '</p></div>');
                     caption.appendTo($(slide));
                 }
 
